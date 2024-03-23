@@ -14,3 +14,7 @@ Pada kode baru ini terdapat status_line yang menunjukkan response HTTP yang suks
 Cara melakukan pemisahan pada response adalah dengan melakukan conditionals terhadap request_line. request_line akan me dicek untuk melakukan penentuan terhadap status_line dan juga file html yang digunakan. Pada kode commit ke-3 ini juga request_line dipersingkat sehingga hanya melakukan read pada line pertama request dan bukan keseluruhan line seperti sebelumnya. Refactoring perlu dilakukan pada conditionals karena terdapat redundansi yang sangat jelas antar kedua kondisi. Oleh karena itu command yang sama dikeluarkan dari conditionals. 
 
 ![Commit 3 screen capture](/assets/images/commit3.png)
+
+## Commit 4 Reflection notes
+127.0.0.1/sleep akan lebih lambat dibandingkan 127.0.0.1 karena ada pemanggilan thread::sleep(Duration::from_secs(5)). Pemanggilan tersebut akan memerintahkan server untuk inactive selama 5 detik. Inactive ini menunjukkan blocking operations yang mengganngu khususnya dalam situasi terdapat konkurensi dalam koneksi.
+
