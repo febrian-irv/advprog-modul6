@@ -18,3 +18,5 @@ Cara melakukan pemisahan pada response adalah dengan melakukan conditionals terh
 ## Commit 4 Reflection notes
 127.0.0.1/sleep akan lebih lambat dibandingkan 127.0.0.1 karena ada pemanggilan thread::sleep(Duration::from_secs(5)). Pemanggilan tersebut akan memerintahkan server untuk inactive selama 5 detik. Inactive ini menunjukkan blocking operations yang mengganngu khususnya dalam situasi terdapat konkurensi dalam koneksi.
 
+## Commit 5 Reflection notes
+ThreadPool diimplementasikan untuk dapat menerima request secara konkurensi. ThreadPool bisa diinisialisasi dengan keyword new dan size yang ditentukan oleh programmer. Pada ThreadPool terdapat worker thread yang terus berjalan dalam loop. Loop tersebut berfungsi untuk menerima job. Terjadilah konkurensi dimana setiap worker akan mengambil job selama tersedia. Pada kasus commit ini worker dibatasi menjadi 4 hal tersebut dilakukan agar menghindari terjadinya spawning unlimited threads. Maka akan terjadi antrean dari request yang datang dan dikerjakan oleh worker tersebut sesuai urutan dan jika worker tersedia kembali setelah melakukan pekerjaan.
